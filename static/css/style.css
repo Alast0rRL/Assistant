@@ -1,0 +1,20 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.section {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    margin-right: 5px;
+}

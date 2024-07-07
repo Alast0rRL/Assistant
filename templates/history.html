@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>История учета</h2>
+        <a href="{{ url_for('index') }}" class="btn btn-primary mb-3">Вернуться на главную</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Общее количество воды (мл)</th>
+                    <th>Общее количество калорий (ккал)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in history_records %}
+                <tr>
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.total_water }}</td>
+                    <td>{{ record.total_calories }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

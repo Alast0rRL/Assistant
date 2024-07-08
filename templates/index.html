@@ -68,27 +68,28 @@
         </div>
 
         <!-- Калькулятор калорий -->
-        <div class="row mt-5">
+        <div class="row calc">
             <div class="col-12">
-                <h2>Калькулятор калорий</h2>
-                <form method="post">
-                    <div class="form-group">
-                        <label for="caloriesPer100g">Калорий на 100г:</label>
-                        <input type="number" id="caloriesPer100g" name="calories_per_100g" class="form-control" placeholder="Введите калории на 100г">
-                    </div>
-                    <div class="form-group">
-                        <label for="weight">Вес (г):</label>
-                        <input type="number" id="weight" name="weight" class="form-control" placeholder="Введите вес в граммах">
-                    </div>
-                    <button type="submit" name="calculate_calories" class="btn btn-primary">Рассчитать</button>
-                </form>
-                {% if calculated_calories is not None %}
-                <div class="alert alert-info mt-3" role="alert">
-                    Общие калории: {{ calculated_calories }} ккал
+                <h2 class="text-center">Калькулятор калорий</h2>
+                <div class="form-group">
+                    <label for="caloriesPer100g">Калорий на 100г:</label>
+                    <input type="number" id="caloriesPer100g" class="form-control" placeholder="Введите калорийность на 100г">
                 </div>
-                {% endif %}
+                <div class="form-group">
+                    <label for="weight">Вес в граммах:</label>
+                    <input type="number" id="weight" class="form-control" placeholder="Введите вес в граммах">
+                </div>
+                <button id="calculateCalories" class="btn btn-primary">Рассчитать</button>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('calculateCalories').addEventListener('click', function() {
+            var caloriesPer100g = document.getElementById('caloriesPer100g').value;
+            var weight = document.getElementById('weight').value;
+            var totalCalories = (caloriesPer100g / 100) * weight;
+            document.getElementById('caloriesOutput').value = totalCalories.toFixed(2) + ' ккал';
+        });
+    </script>
 </body>
 </html>

@@ -44,7 +44,7 @@ def reset_tracker():
 def index():
     reset_tracker()
     tracker = Tracker.query.first()
-    calculated_calories = None
+    calculated_calories = ""
     if request.method == 'POST':
         if 'add_water' in request.form:
             water_amount = int(request.form['water_amount'])
@@ -55,15 +55,15 @@ def index():
         elif 'add_calories' in request.form:
             calories_amount = int(request.form['calories_amount'])
             tracker.total_calories += calories_amount
+        elif 'reset' in request.form:
+            tracker.total_water = 0
+            tracker.total_calories = 0
         elif 'calculate_calories' in request.form:
             calories_per_100g = int(request.form['calories_per_100g'])
             weight = int(request.form['weight'])
             calculated_calories = (calories_per_100g / 100) * weight
-        elif 'reset' in request.form:
-            tracker.total_water = 0
-            tracker.total_calories = 0
         db.session.commit()
-        return redirect(url_for('index', calculated_calories=calculated_calories))
+        return redirect(url_for('index'))
     return render_template('index.html', total_water=tracker.total_water, total_calories=tracker.total_calories, calculated_calories=calculated_calories)
 
 @app.route('/history')

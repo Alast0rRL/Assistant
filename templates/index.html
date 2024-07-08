@@ -21,7 +21,7 @@
                 <h2>Учет воды</h2>
                 <div class="form-group">
                     <label for="totalWater">Общее количество воды:</label>
-                    <input type="text" id="totalWater" class="form-control" value="{{ total_water }} мл / 3500 мл" readonly>
+                    <input type="text" id="totalWater" class="form-control" value="{{ total_water }} мл / 4000 мл" readonly>
                 </div>
                 <form method="post">
                     <div class="form-group">
@@ -45,7 +45,7 @@
                 <h2>Учет калорий</h2>
                 <div class="form-group">
                     <label for="totalCalories">Общее количество калорий:</label>
-                    <input type="text" id="totalCalories" class="form-control" value="{{ total_calories }} ккал / 2000 ккал" readonly>
+                    <input type="text" id="totalCalories" class="form-control" value="{{ total_calories }} ккал / 2100 ккал" readonly>
                 </div>
                 <form method="post">
                     <div class="form-group">
@@ -64,6 +64,29 @@
                     <button type="submit" name="reset" class="btn btn-danger">Сброс</button>
                 </form>
                 <a href="{{ url_for('history') }}" class="btn btn-info">История</a>
+            </div>
+        </div>
+
+        <!-- Калькулятор калорий -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2>Калькулятор калорий</h2>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="caloriesPer100g">Калорий на 100г:</label>
+                        <input type="number" id="caloriesPer100g" name="calories_per_100g" class="form-control" placeholder="Введите калории на 100г">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Вес (г):</label>
+                        <input type="number" id="weight" name="weight" class="form-control" placeholder="Введите вес в граммах">
+                    </div>
+                    <button type="submit" name="calculate_calories" class="btn btn-primary">Рассчитать</button>
+                </form>
+                {% if calculated_calories is not None %}
+                <div class="alert alert-info mt-3" role="alert">
+                    Общие калории: {{ calculated_calories }} ккал
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

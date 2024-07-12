@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать запись</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Редактировать запись</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="total_water">Общее количество воды (мл)</label>
+                <input type="number" class="form-control" id="total_water" name="total_water" value="{{ record.total_water }}">
+            </div>
+            <div class="form-group">
+                <label for="total_calories">Общее количество калорий (ккал)</label>
+                <input type="number" class="form-control" id="total_calories" name="total_calories" value="{{ record.total_calories }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            <a href="{{ url_for('history') }}" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</body>
+</html>
